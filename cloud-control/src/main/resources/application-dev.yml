@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: 111111
+    url: jdbc:mysql://175.24.245.45:3306/cloud-youshu-server?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+canal:
+  client:
+    host: 175.24.245.45
+    port: 11111
+    username: canal
+    password: canal
+    subscribe: canal_test.*

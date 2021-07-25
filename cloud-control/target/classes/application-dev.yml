@@ -7,8 +7,16 @@ spring:
 
 canal:
   client:
+    isOpenCanal: false
     host: 175.24.245.45
     port: 11111
     username: canal
     password: canal
     subscribe: canal_test.*
+
+logging:
+  level:
+    org.apache.kafka.common.serialization.StringDeserializer: ERROR
+    org.apache.kafka.clients.consumer.RangeAssignor: ERROR
+
+

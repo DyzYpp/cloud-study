@@ -33,6 +33,9 @@ public class CanalClient implements ApplicationContextAware {
     @Value("${canal.client.subscribe}")
     private String subscribe;
 
+    @Value("${canal.client.isOpenCanal}")
+    private Boolean isOpenCanal;
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         CanalThread canalThread = new CanalThread();
@@ -41,6 +44,7 @@ public class CanalClient implements ApplicationContextAware {
         canalThread.setUsername(username);
         canalThread.setPassword(password);
         canalThread.setSubscribe(subscribe);
+        canalThread.setIsOpenCanal(isOpenCanal);
         canalThread.start();
     }
 }

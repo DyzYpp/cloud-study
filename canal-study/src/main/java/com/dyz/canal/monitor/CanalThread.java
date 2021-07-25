@@ -4,11 +4,9 @@ import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
-import com.dyz.canal.handle.HandleData;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.Resource;
 import java.net.InetSocketAddress;
 import java.util.List;
 
@@ -26,8 +24,14 @@ public class CanalThread extends Thread {
 
     private String subscribe;
 
+    private Boolean isOpenCanal;
+
     @Override
     public void run() {
+        if (!isOpenCanal) {
+            log.info("------------------Canal已经关闭!!!--------------------");
+            return;
+        }
         log.info("初始化canal监听");
         CanalConnector connection = getConnection();
         // 打开连接

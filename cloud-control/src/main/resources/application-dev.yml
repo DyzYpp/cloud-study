@@ -14,9 +14,4 @@ canal:
     password: canal
     subscribe: cloud-youshu-serve.*
 
-logging:
-  level:
-    org.apache.kafka.common.serialization.StringDeserializer: ERROR
-    org.apache.kafka.clients.consumer.RangeAssignor: ERROR
-
 

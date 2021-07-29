@@ -15,6 +15,6 @@ public class KafkaConsumerController {
 
     @PostMapping("consumerMessageToKafka")
     public void consumerMessageToKafka() {
-        kafkaConsumerTest.consumerMessage();
+//        kafkaConsumerTest.consumerMessage();
     }
 }

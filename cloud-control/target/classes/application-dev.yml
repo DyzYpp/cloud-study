@@ -7,8 +7,10 @@ spring:
 
 canal:
   client:
+    isOpenCanal: false
     host: 175.24.245.45
     port: 11111
     username: canal
     password: canal
     subscribe: cloud-youshu-sit.*
+

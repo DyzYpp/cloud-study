@@ -27,10 +27,15 @@ public class CanalThread extends Thread {
 
     private String subscribe;
 
+    private Boolean isOpenCanal;
     private List<CanalConsumer> canalConsumers;
 
     @Override
     public void run() {
+        if (!isOpenCanal) {
+            log.info("------------------Canal已经关闭!!!--------------------");
+            return;
+        }
         log.info("初始化canal监听");
         CanalConnector connection = getConnection();
         // 打开连接

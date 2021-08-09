@@ -25,7 +25,7 @@ public class KafkaConfig {
     public KafkaTemplate<String, String> kafkaTemplate(){
         Map<String, Object> props = new HashMap<>();
         props.put("bootstrap.servers", "175.24.245.45:9092");
-        props.put("zookeeper.connect", "175.24.245.45:2181");
+        props.put("zookeeper.connect", "175.24.245.45:2180");
         props.put("acks", "all");
         props.put("retries", 0);
         props.put("batch.size", 16384);
@@ -39,7 +39,7 @@ public class KafkaConfig {
     public ConsumerFactory<String, String> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put("bootstrap.servers", "175.24.245.45:9092");
-        props.put("zookeeper.connect", "175.24.245.45:2181");
+        props.put("zookeeper.connect", "175.24.245.45:2180");
         props.put("group.id", "test");
         props.put("enable.auto.commit", "true");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");

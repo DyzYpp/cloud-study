@@ -7,7 +7,7 @@ spring:
 
 canal:
   client:
-    isOpenCanal: false
+    isOpenCanal: true
     host: 175.24.245.45
     port: 11111
     username: canal

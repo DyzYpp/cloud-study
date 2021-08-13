@@ -1,5 +1,6 @@
 package com.dyz;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -21,19 +22,26 @@ import java.util.Map;
 @Configuration
 @EnableKafka
 public class KafkaConfig {
+
+    @Value("${kafka.isOpenKafkaSender}")
+    private boolean isOpen;
+
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate(){
-        Map<String, Object> props = new HashMap<>();
-        props.put("bootstrap.servers", "175.24.245.45:9092");
-        props.put("zookeeper.connect", "175.24.245.45:2180");
-        props.put("acks", "all");
-        props.put("retries", 0);
-        props.put("batch.size", 16384);
-        props.put("linger.ms", 1);
-        props.put("buffer.memory", 33554432);
-        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(props));
+        if (isOpen) {
+            Map<String, Object> props = new HashMap<>();
+            props.put("bootstrap.servers", "175.24.245.45:9092");
+            props.put("zookeeper.connect", "175.24.245.45:2180");
+            props.put("acks", "all");
+            props.put("retries", 0);
+            props.put("batch.size", 16384);
+            props.put("linger.ms", 1);
+            props.put("buffer.memory", 33554432);
+            props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+            props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+            return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(props));
+        }
+        return null;
     }
 
     public ConsumerFactory<String, String> consumerFactory() {
@@ -49,9 +57,12 @@ public class KafkaConfig {
 
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
-        factory.getContainerProperties().setPollTimeout(1500);
-        return factory;
+        if (isOpen) {
+            ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+            factory.setConsumerFactory(consumerFactory());
+            factory.getContainerProperties().setPollTimeout(1500);
+            return factory;
+        }
+        return null;
     }
 }

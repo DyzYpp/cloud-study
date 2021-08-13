@@ -82,7 +82,7 @@ public class CanalThread extends Thread {
      * @return
      */
     private CanalConnector getConnection() {
-        return CanalConnectors.newSingleConnector(new InetSocketAddress(canalHost, canalPort), "example", username, password);
+        return CanalConnectors.newSingleConnector(new InetSocketAddress(canalHost, canalPort), example, username, password);
     }
 
     public void consumerMessage(List<Entry> entryList) {

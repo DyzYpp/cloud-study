@@ -16,6 +16,7 @@ canal:
     username: canal
     password: canal
     subscribe: cloud-youshu-dev.*
+    example: example_dev
 
 kafka:
   isOpenKafkaSender: false

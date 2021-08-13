@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/kafkaSender")
 public class KafkaSenderController {
 
-    @Autowired
-    private KafkaProducerTest kafkaProducerTest;
-
-    @PostMapping("sendMessageToKafka")
-    public void sendMessageToKafka() throws InterruptedException {
-        kafkaProducerTest.sendMessage();
-    }
+//    @Autowired
+//    private KafkaProducerTest kafkaProducerTest;
+//
+//    @PostMapping("sendMessageToKafka")
+//    public void sendMessageToKafka() throws InterruptedException {
+//        kafkaProducerTest.sendMessage();
+//    }
 
 }

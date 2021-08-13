@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class KafkaConsumerTest {
 
-    @KafkaListener(topics = {"testTopic"})
-    public void consumerMessage(ConsumerRecord<?, ?> record) {
-        log.info("这是消费的第 {} 条消息：{}", record.key(), record.value());
-    }
+//    @KafkaListener(topics = {"testTopic"})
+//    public void consumerMessage(ConsumerRecord<?, ?> record) {
+//        log.info("这是消费的第 {} 条消息：{}", record.key(), record.value());
+//    }
 }

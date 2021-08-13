@@ -35,6 +35,9 @@ public class CanalClient implements ApplicationContextAware {
     @Value("${canal.client.isOpenCanal}")
     private Boolean isOpenCanal;
 
+    @Value("${canal.client.example}")
+    private String example;
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         CanalThread canalThread = new CanalThread();
@@ -46,6 +49,7 @@ public class CanalClient implements ApplicationContextAware {
         canalThread.setPassword(password);
         canalThread.setSubscribe(subscribe);
         canalThread.setIsOpenCanal(isOpenCanal);
+        canalThread.setExample(example);
         //注册HandleData
         Map<String, CanalConsumer> canalConsumers = applicationContext.getBeansOfType(CanalConsumer.class);
         List<CanalConsumer> list = new ArrayList(canalConsumers.values());

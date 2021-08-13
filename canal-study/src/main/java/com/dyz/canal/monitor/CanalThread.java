@@ -27,6 +27,8 @@ public class CanalThread extends Thread {
 
     private String subscribe;
 
+    private String example;
+
     private Boolean isOpenCanal;
     private List<CanalConsumer> canalConsumers;
 
@@ -67,7 +69,7 @@ public class CanalThread extends Thread {
                 connection.ack(batchId);
             }
         } catch (Exception e) {
-//            log.error("canal数据库监听启动失败！", e);
+            log.error("canal数据库监听启动失败！", e);
             // TODO 重启
         } finally {
             connection.disconnect();

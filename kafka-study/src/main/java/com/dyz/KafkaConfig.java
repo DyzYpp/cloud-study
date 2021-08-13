@@ -28,7 +28,7 @@ public class KafkaConfig {
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate(){
-        if (isOpen) {
+//        if (isOpen) {
             Map<String, Object> props = new HashMap<>();
             props.put("bootstrap.servers", "175.24.245.45:9092");
             props.put("zookeeper.connect", "175.24.245.45:2180");
@@ -40,8 +40,8 @@ public class KafkaConfig {
             props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
             props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
             return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(props));
-        }
-        return null;
+//        }
+//        return null;
     }
 
     public ConsumerFactory<String, String> consumerFactory() {
@@ -57,12 +57,12 @@ public class KafkaConfig {
 
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory() {
-        if (isOpen) {
+//        if (isOpen) {
             ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
             factory.setConsumerFactory(consumerFactory());
             factory.getContainerProperties().setPollTimeout(1500);
             return factory;
-        }
-        return null;
+//        }
+//        return null;
     }
 }

@@ -1,9 +1,12 @@
 spring:
+server:
+  port: 9000
   datasource:
     username: root
     password: root
     url: jdbc:mysql://175.24.245.45:3306/cloud-youshu-sit?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
+
 
 canal:
   client:
@@ -13,6 +16,7 @@ canal:
     username: canal
     password: canal
     subscribe: cloud-youshu-dev.*
+    example: example_dev
 
 kafka:
   isOpenKafkaSender: false

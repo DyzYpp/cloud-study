@@ -1,4 +1,6 @@
 spring:
+  server:
+    port: 9002
   datasource:
     username: root
     password: root
@@ -13,6 +15,7 @@ canal:
     username: canal
     password: canal
     subscribe: cloud-youshu-sit.*
+    example: example
 
 kafka:
   isOpenKafkaSender: false
